@@ -1,0 +1,24 @@
+{
+  "name": "pet-store-frontend-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/pet-store-frontend-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": [
+        "{workspaceRoot}/dist/.playwright/apps/pet-store-frontend-e2e"
+      ],
+      "options": {
+        "config": "apps/pet-store-frontend-e2e/playwright.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/pet-store-frontend-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "implicitDependencies": ["pet-store-frontend"]
+}

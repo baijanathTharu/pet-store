@@ -66,6 +66,10 @@
       "options": {
         "lintFilePatterns": ["apps/pet-store-frontend/**/*.{ts,tsx,js,jsx}"]
       }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/pet-store-frontend/Dockerfile . -t pet-store-frontend"
     }
   },
   "tags": []

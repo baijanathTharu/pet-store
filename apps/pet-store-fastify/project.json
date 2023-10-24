@@ -1,0 +1,82 @@
+{
+  "name": "pet-store-fastify",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/pet-store-fastify/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/pet-store-fastify",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/pet-store-fastify/src/main.ts",
+        "tsConfig": "apps/pet-store-fastify/tsconfig.app.json",
+        "assets": ["apps/pet-store-fastify/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "generateLockfile": true,
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "pet-store-fastify:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "pet-store-fastify:build:development"
+        },
+        "production": {
+          "buildTarget": "pet-store-fastify:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/pet-store-fastify/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/pet-store-fastify/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/pet-store-fastify/Dockerfile . -t pet-store-fastify"
+    }
+  },
+  "tags": []
+}

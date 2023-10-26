@@ -1,19 +1,4 @@
-import { cognitoConfig } from '../config/cognito';
-import { Auth, Amplify } from 'aws-amplify';
-
-Amplify.configure({
-  Auth: {
-    userPoolId: cognitoConfig.userPool,
-    userPoolWebClientId: cognitoConfig.clientId,
-    region: cognitoConfig.region,
-    oauth: {
-      scope: cognitoConfig.tokenScopes,
-      redirectSignIn: cognitoConfig.callbackUri,
-      redirectSignOut: cognitoConfig.signoutUri,
-      responseType: 'code',
-    },
-  },
-});
+import { Auth } from 'aws-amplify';
 
 export async function signUp({
   email,

@@ -23,6 +23,10 @@ export default defineConfig({
   //  plugins: [ nxViteTsPaths() ],
   // },
 
+  define: {
+    global: {},
+  },
+
   test: {
     globals: true,
     cache: {

@@ -1,5 +1,6 @@
 import { Link, Outlet, createBrowserRouter } from 'react-router-dom';
 import { LoginPage } from './pages/login';
+import { SignupPage } from './pages/sign-up';
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,9 @@ export const router = createBrowserRouter([
                 <Link to={'/auth/sign-up'}>Signup</Link>
               </li>
               <li>
+                <Link to={'/auth/change-password'}>Change Password</Link>
+              </li>
+              <li>
                 <Link to={'/auth/forgot-password'}>Forgot Password</Link>
               </li>
             </ul>
@@ -40,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'sign-up',
-        element: <div>sign up page</div>,
+        element: <SignupPage />,
       },
       {
         path: 'forgot-password',

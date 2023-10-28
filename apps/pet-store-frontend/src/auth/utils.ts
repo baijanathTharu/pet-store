@@ -8,8 +8,11 @@ export async function signUp({
   password: string;
 }) {
   return await Auth.signUp({
-    username: email,
+    username: email.split('@')[0],
     password,
+    attributes: {
+      email,
+    },
   });
 }
 

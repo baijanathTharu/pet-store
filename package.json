@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@aws-amplify/ui-react": "^5.3.1",
     "@fastify/autoload": "~5.7.1",
     "@fastify/sensible": "~5.2.0",
     "@swc/helpers": "~0.5.2",

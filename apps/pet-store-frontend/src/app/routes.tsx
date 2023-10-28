@@ -1,6 +1,7 @@
 import { Link, Outlet, createBrowserRouter } from 'react-router-dom';
 import { LoginPage } from './pages/login';
 import { SignupPage } from './pages/sign-up';
+import { AmplifyAuthPage } from './pages/amplify-auth';
 
 export const router = createBrowserRouter([
   {
@@ -8,6 +9,7 @@ export const router = createBrowserRouter([
     element: (
       <div>
         <Link to={'/auth'}>Auth</Link>
+        <Link to={'/amplify-auth'}>Amplify Auth</Link>
       </div>
     ),
   },
@@ -51,5 +53,9 @@ export const router = createBrowserRouter([
         element: <div>forgot password page</div>,
       },
     ],
+  },
+  {
+    path: 'amplify-auth',
+    element: <AmplifyAuthPage />,
   },
 ]);
